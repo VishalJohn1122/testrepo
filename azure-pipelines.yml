@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://ak
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '1.6.6'
+
+- script: |
+    terraform init
+    terraform plan -out=tfplan
+    terraform apply -auto-approve tfplan
+  displayName: 'Terraform Apply'
