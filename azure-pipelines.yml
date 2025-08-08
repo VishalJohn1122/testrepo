@@ -10,9 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: '1.6.6'
+- script: |
+    sudo apt-get update -y
+    sudo apt-get install -y unzip
+    curl -o terraform.zip https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+    unzip terraform.zip
+    sudo mv terraform /usr/local/bin/
+    terraform -version
+  displayName: 'Install Terraform'
 
 - script: |
     terraform init
