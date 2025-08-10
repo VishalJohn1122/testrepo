@@ -7,7 +7,7 @@ trigger:
   - main
 
 pool:
-  vmImage: ' JamesBond'
+  vmImage: 'JamesBond'
 
 steps:
 - script: |
