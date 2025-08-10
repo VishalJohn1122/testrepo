@@ -7,7 +7,7 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'JamesBond'
 
 steps:
 - script: |
