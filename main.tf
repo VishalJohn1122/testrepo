@@ -1,7 +1,10 @@
 provider "azurerm" {
   features {}
-}
 
+
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
+}
 # Resource Group
 resource "azurerm_resource_group" "TestRG" {
   name     = var.resource_group_name
@@ -156,3 +159,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
               EOF
   )
 }
+
