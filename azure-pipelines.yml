@@ -9,10 +9,6 @@ trigger:
 pool:
   name: 'JamesBond'
 
-variables:
-  terraformVersion: '1.6.6'
-  terraformPath: '$C:\Users\buildagent\terraform'
-
 steps:
 - powershell: |
     Write-Host "Installing Terraform..."
