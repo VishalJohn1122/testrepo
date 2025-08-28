@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "TestRG" {
 }
 
 # Storage Account
-resource "azurerm_storage_account" "TestSA" {
+resource "azurerm_storage_account" "testsa01" {
   name                     = var.storage_account_name
   resource_group_name      = azurerm_resource_group.TestRG.name
   location                 = azurerm_resource_group.TestRG.location
@@ -21,7 +21,7 @@ resource "azurerm_storage_account" "TestSA" {
 }
 
 # Key Vault
-resource "azurerm_key_vault" "TestKV" {
+resource "azurerm_key_vault" "testkv01" {
   name                        = var.key_vault_name
   location                    = azurerm_resource_group.TestRG.location
   resource_group_name         = azurerm_resource_group.TestRG.name
@@ -42,14 +42,14 @@ resource "azurerm_key_vault" "TestKV" {
 resource "azurerm_key_vault_secret" "app_secret" {
   name         = "AppPassword"
   value        = var.admin_password
-  key_vault_id = azurerm_key_vault.TestKV.id
+  key_vault_id = azurerm_key_vault.testkv01.id
 }
 
 # Get current client info
 data "azurerm_client_config" "Novasphere" {}
 
 # Virtual Network
-resource "azurerm_virtual_network" "TestVnet" {
+resource "azurerm_virtual_network" "testvnet01" {
   name                = "app-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.TestRG.location
@@ -57,7 +57,7 @@ resource "azurerm_virtual_network" "TestVnet" {
 }
 
 # Subnet
-resource "azurerm_subnet" "TestSubnet" {
+resource "azurerm_subnet" "testsubnet01" {
   name                 = "app-subnet"
   resource_group_name  = azurerm_resource_group.TestRG.name
   virtual_network_name = azurerm_virtual_network.TestVnet.name
@@ -65,7 +65,7 @@ resource "azurerm_subnet" "TestSubnet" {
 }
 
 # Network Security Group
-resource "azurerm_network_security_group" "TestNSG" {
+resource "azurerm_network_security_group" "testnsg01" {
   name                = "app-nsg"
   location            = azurerm_resource_group.TestRG.location
   resource_group_name = azurerm_resource_group.TestRG.name
@@ -104,25 +104,25 @@ resource "azurerm_public_ip" "Tst-public_ip" {
 }
 
 # Network Interface
-resource "azurerm_network_interface" "Test-nic" {
+resource "azurerm_network_interface" "test-nic" {
   name                = "app-nic"
   location            = azurerm_resource_group.TestRG.location
   resource_group_name = azurerm_resource_group.TestRG.name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.TestSubnet.id
+    subnet_id                     = azurerm_subnet.testsubnet01.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.Tst-public_ip.id
+    public_ip_address_id          = azurerm_public_ip.tst-public_ip.id
 
   }
 
 }
 
 #Network Association
-resource "azurerm_network_interface_security_group_association" "Test-nic-nsg" {
-  network_interface_id      = azurerm_network_interface.Test-nic.id
-  network_security_group_id = azurerm_network_security_group.TestNSG.id
+resource "azurerm_network_interface_security_group_association" "test-nic-nsg" {
+  network_interface_id      = azurerm_network_interface.test-nic.id
+  network_security_group_id = azurerm_network_security_group.testnsg01.id
 }
 
 # Linux VM
@@ -159,5 +159,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
               EOF
   )
 }
+
 
 
