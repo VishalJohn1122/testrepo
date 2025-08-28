@@ -60,7 +60,7 @@ resource "azurerm_virtual_network" "testvnet01" {
 resource "azurerm_subnet" "testsubnet01" {
   name                 = "app-subnet"
   resource_group_name  = azurerm_resource_group.TestRG.name
-  virtual_network_name = azurerm_virtual_network.TestVnet.name
+  virtual_network_name = azurerm_virtual_network.testvent01.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
@@ -96,7 +96,7 @@ resource "azurerm_network_security_group" "testnsg01" {
 }
 
 # Public IP
-resource "azurerm_public_ip" "Tst-public_ip" {
+resource "azurerm_public_ip" "tst-public_ip" {
   name                = "app-public-ip"
   location            = azurerm_resource_group.TestRG.location
   resource_group_name = azurerm_resource_group.TestRG.name
@@ -134,7 +134,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username      = var.admin_username
   admin_password      = var.admin_password
 
-  network_interface_ids = [azurerm_network_interface.Test-nic.id]
+  network_interface_ids = [azurerm_network_interface.test-nic.id]
 
   os_disk {
     name                 = "app-os-disk"
@@ -159,6 +159,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
               EOF
   )
 }
+
 
 
 
