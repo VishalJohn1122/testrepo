@@ -60,7 +60,7 @@ resource "azurerm_virtual_network" "testvnet01" {
 resource "azurerm_subnet" "testsubnet01" {
   name                 = "app-subnet"
   resource_group_name  = azurerm_resource_group.TestRG.name
-  virtual_network_name = azurerm_virtual_network.testvent01.name
+  virtual_network_name = azurerm_virtual_network.testvnet01.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
@@ -159,6 +159,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
               EOF
   )
 }
+
 
 
 
