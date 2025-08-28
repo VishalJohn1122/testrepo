@@ -2,8 +2,10 @@ provider "azurerm" {
   features {}
 
 
+
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
+
 }
 # Resource Group
 resource "azurerm_resource_group" "TestRG" {
@@ -112,7 +114,7 @@ resource "azurerm_network_interface" "test-nic" {
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.testsubnet01.id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "Static"
     public_ip_address_id          = azurerm_public_ip.tst-public_ip.id
 
   }
