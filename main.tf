@@ -14,7 +14,7 @@ resource "azurerm_resource_group" "TestRG" {
 }
 
 # Storage Account
-resource "azurerm_storage_account" "testsa01" {
+resource "azurerm_storage_account" "testsanova13" {
   name                     = var.storage_account_name
   resource_group_name      = azurerm_resource_group.TestRG.name
   location                 = azurerm_resource_group.TestRG.location
@@ -136,6 +136,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                = var.vm_size
   admin_username      = var.admin_username
   admin_password      = var.admin_password
+  disable_password_authentication = false
 
   network_interface_ids = [azurerm_network_interface.test-nic.id]
 

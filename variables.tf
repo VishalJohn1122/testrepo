@@ -15,7 +15,7 @@ variable "resource_group_name" {
 }
 
 variable "storage_account_name" {
-  default = "testsa01"
+  default = "testsanova13"
 }
 
 variable "key_vault_name" {

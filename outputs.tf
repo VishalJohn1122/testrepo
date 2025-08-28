@@ -3,7 +3,7 @@ output "public_ip_address" {
 }
 
 output "storage_account_name" {
-  value = azurerm_storage_account.testsa01.name
+  value = azurerm_storage_account.testsanova13.name
 }
 
 output "key_vault_uri" {
