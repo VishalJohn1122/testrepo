@@ -44,7 +44,7 @@ resource "azurerm_key_vault" "testkvnova" {
 resource "azurerm_key_vault_secret" "app_secret" {
   name         = "AppPassword"
   value        = var.admin_password
-  key_vault_id = azurerm_key_vault.testkv01.id
+  key_vault_id = azurerm_key_vault.testkvnova.id
 }
 
 # Get current client info
