@@ -102,7 +102,7 @@ resource "azurerm_public_ip" "tst-public_ip" {
   name                = "app-public-ip"
   location            = azurerm_resource_group.TestRG.location
   resource_group_name = azurerm_resource_group.TestRG.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 }
 
 # Network Interface
