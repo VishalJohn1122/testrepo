@@ -7,7 +7,7 @@ output "storage_account_name" {
 }
 
 output "key_vault_uri" {
-  value = azurerm_key_vault.testkv01.vault_uri
+  value = azurerm_key_vault.testkvnova.vault_uri
 }
 
 

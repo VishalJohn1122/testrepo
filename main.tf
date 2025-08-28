@@ -23,7 +23,7 @@ resource "azurerm_storage_account" "testsa01" {
 }
 
 # Key Vault
-resource "azurerm_key_vault" "testkv01" {
+resource "azurerm_key_vault" "testkvnova" {
   name                        = var.key_vault_name
   location                    = azurerm_resource_group.TestRG.location
   resource_group_name         = azurerm_resource_group.TestRG.name
