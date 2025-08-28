@@ -19,7 +19,7 @@ variable "storage_account_name" {
 }
 
 variable "key_vault_name" {
-  default = "testkv01"
+  default = "testkvnova130922"
 }
 
 variable "vm_size" {
