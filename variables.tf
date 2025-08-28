@@ -15,11 +15,11 @@ variable "resource_group_name" {
 }
 
 variable "storage_account_name" {
-  default = "TestSA"
+  default = "testsa01"
 }
 
 variable "key_vault_name" {
-  default = "TestKV"
+  default = "testkv01"
 }
 
 variable "vm_size" {
@@ -27,10 +27,11 @@ variable "vm_size" {
 }
 
 variable "admin_username" {
-  default = "TestUser"
+  default = "testuser"
 }
 
 variable "admin_password" {
   default = "Password@1234" # Use a secure password in production
 }
+
 
